@@ -5,16 +5,21 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        l1 = l1[::-1]
-        l2 = l2[::-1]
 
-        sum1 = int(''.join(map(str, l1)))
-        sum2 = int(''.join(map(str, l2)))
+        sum1, sum2 = 0, 0
+
+        for digit in l1:
+            sum1 = sum1 * 10 + digit
+        for digit in l2:
+            sum2 = sum2 * 10 + digit
+
         sum = sum1+sum2
 
         sum_list = [int(number) for number in str(sum)]
-
-        return sum_list
+        reverted_list = []
+        for i in range(len(sum_list) -1, -1, -1):
+            reverted_list.append(sum_list[i])
+        return reverted_list
 
 l1 = [2,4,3]
 l2 = [5,6,4]
